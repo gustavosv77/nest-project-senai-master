@@ -2,9 +2,15 @@ import { ApiProperty } from "@nestjs/swagger";
 import { IsEmail, IsString, Matches, MinLength } from "class-validator";
 
 export class CreateUserDto {
+    @ApiProperty({ example: 'Cleiton Souza'})
     @IsString()
     name: string;
 
+    @ApiProperty({
+      example: 'usuario123@gmail.com',
+      description:
+        'Email deve conter caracteres seguidos de @ e .',
+    })
     @IsEmail()
     email: string;
 
@@ -21,5 +27,6 @@ export class CreateUserDto {
     password: string;
     
     @IsString()
+    @ApiProperty({ example: 'https://i.pinimg.com/736x/39/0e/4a/390e4aa2c02a1614a143256fa1b9df89.jpg'})
     picture: string;
 }
