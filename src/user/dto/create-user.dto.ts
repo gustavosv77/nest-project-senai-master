@@ -7,7 +7,7 @@ export class CreateUserDto {
     name: string;
 
     @ApiProperty({
-      example: 'usuario123@gmail.com',
+      example: 'usuario123@mail.com',
       description:
         'Email deve conter caracteres seguidos de @ e .',
     })
