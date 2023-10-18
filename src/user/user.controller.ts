@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { UserService as UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { ApiTags, ApiOperation } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 
 @ApiTags('User')
 @Controller('user')
@@ -20,24 +20,28 @@ export class UserController {
   }
 
   @Get()
+  @ApiBearerAuth()
   @ApiOperation({summary: 'Pesquisar todos os usuários.'})
   findAll() {
     return this.userService.findAll();
   }
 
   @Get(':id')
+  @ApiBearerAuth()
   @ApiOperation({summary: 'Pesquisar um usuário por id.'})
   findOne(@Param('id') id: string) {
     return this.userService.findOne(id);
   }
 
   @Patch(':id')
+  @ApiBearerAuth()
   @ApiOperation({summary: 'Alterar dados do usuário.'})
   update(@Param('id') id: string, @Body() updateAuthDto: UpdateUserDto) {
     return this.userService.update(id, updateAuthDto);
   }
 
   @Delete(':id')
+  @ApiBearerAuth()
   @ApiOperation({summary: 'Deletar um Usuário.'})
   remove(@Param('id') id: string) {
     return this.userService.remove(id);

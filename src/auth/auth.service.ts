@@ -45,7 +45,7 @@ export class AuthService {
     picture: string;
     admin?: boolean;
   } | null> {
-    const user: User = await this.usersService.findOne(email);
+    const user: User = await this.usersService.findOne(undefined,email);
     if (user && user.password === password) {
       const { password, ...result } = user;
       return result;
