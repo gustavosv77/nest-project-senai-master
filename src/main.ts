@@ -16,6 +16,7 @@ async function bootstrap() {
     .addServer('http://localhost:3000', 'Local')
     .addTag('Status')
     .addTag('User')
+    .addTag('Telegram')
     .addBearerAuth()
     .build();
 
