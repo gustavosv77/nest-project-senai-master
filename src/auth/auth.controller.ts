@@ -27,7 +27,7 @@ import { AuthGuard } from './decorators/auth.guard';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { User } from 'src/user/entities/user.entity';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -36,6 +36,7 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
+  @ApiOperation({summary: "Gerar token de login do usuário."})
   async signIn(@Body() LoginDto: LoginDto) {
    const user:User = await this.authService.validateUser(LoginDto.email, LoginDto.password)
    return this.authService.login(user)
@@ -44,6 +45,7 @@ export class AuthController {
   @UseGuards(AuthGuard)
   @ApiBearerAuth()
   @Get('profile')
+  @ApiOperation({summary: "Mostrar informações do usuário logado."})
   getProfile(@Request() req) {
     return req.user;
   }

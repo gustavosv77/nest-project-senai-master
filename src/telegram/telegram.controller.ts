@@ -9,7 +9,7 @@ export class TelegramController {
   constructor(private readonly telegramService: TelegramService) {}
 
   @Post('send')
-  @ApiOperation({summary: "enviar mensagem telegram"})
+  @ApiOperation({summary: "Enviar mensagem telegram."})
   sendMessage(@Body() dtoMessage: sendMessageDto) {
     this.telegramService.sendTelegrafText(dtoMessage);
   }
