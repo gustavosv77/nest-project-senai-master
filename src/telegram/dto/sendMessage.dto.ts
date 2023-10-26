@@ -1,18 +1,18 @@
 import { ApiProperty } from "@nestjs/swagger"
 
 export class SendMessageDto { 
-    @ApiProperty()
+    @ApiProperty({example: "Olá estou funcionando"})
     message: string;
 
-    @ApiProperty()
+    @ApiProperty({example: -1002033466946})
     chatid: number;
 
-    @ApiProperty()
+    @ApiProperty({example: "6929935727:AAGlXC4BMnLCkPxcS8Stfav-z2I7G3TfAa4"})
     tokenbot: string;
     
-    @ApiProperty()
+    @ApiProperty({example: []})
     images: string[] | undefined;
 
-    @ApiProperty()
+    @ApiProperty({example: "2023-10-26T20:00:00"})
     schedule: string | Date
 }
