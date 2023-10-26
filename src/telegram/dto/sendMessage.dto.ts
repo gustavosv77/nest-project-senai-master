@@ -11,5 +11,8 @@ export class SendMessageDto {
     tokenbot: string;
     
     @ApiProperty()
-    images: string[] | undefined
+    images: string[] | undefined;
+
+    @ApiProperty()
+    schedule: string | Date
 }
