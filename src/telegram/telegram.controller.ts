@@ -9,8 +9,14 @@ export class TelegramController {
   constructor(private readonly telegramService: TelegramService) {}
 
   @Post('send')
-  @ApiOperation({summary: "Enviar mensagem telegram."})
-  sendMessage(@Body() dtoMessage: sendMessageDto) {
-    this.telegramService.sendTelegrafText(dtoMessage);
+  @ApiOperation({ summary: 'Enviar mensagem telegram.' })
+  async sendMessage(@Body() dtoMessage: sendMessageDto) {
+    await this.telegramService.sendTelegrafText(dtoMessage);
+  }
+
+  @Post('send-media')
+  @ApiOperation({ summary: 'Enviar mensagem telegram com imagem.' })
+  async sendMessageMedia(@Body() dtoMessage: sendMessageDto) {
+    await this.telegramService.sendTelegrafMedia(dtoMessage)
   }
 }

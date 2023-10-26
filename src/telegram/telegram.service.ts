@@ -30,10 +30,10 @@ export class TelegramService {
   }
 
   async sendTelegrafMedia(
-    message: string,
-    chatid: string,
-    tokenbot: string,
-    images: string[],
+    {message ,
+    chatid ,
+    tokenbot ,
+    images,}: sendMessageDto
   ) {
     const bot = new Telegraf(tokenbot);
     const media: MediaGroup = images.map((image) => ({
