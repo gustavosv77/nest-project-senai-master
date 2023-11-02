@@ -3,6 +3,7 @@ import { UserService as UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
+import { requestTokenRecoverPasswordDto } from './dto/requestTokenRecoverPassword.dto';
 
 @ApiTags('User')
 @Controller('user')
@@ -45,6 +46,12 @@ export class UserController {
   @ApiOperation({summary: 'Deletar um Usuário.'})
   remove(@Param('id') id: string) {
     return this.userService.remove(id);
+  }
+
+  @Post("recover")
+  @ApiOperation({summary: 'Solicitar token de recuperação de senha.'})
+  async requestTokenRecoverPassword (@Body() dto: requestTokenRecoverPasswordDto) {
+    return this.userService.createTokenRecoverPassword(dto.email);
   }
 }
 

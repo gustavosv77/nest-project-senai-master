@@ -6,9 +6,10 @@ CREATE TABLE "new_user" (
     "name" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "picture" TEXT NOT NULL,
+    "token" INTEGER NOT NULL DEFAULT 1,
     "admin" BOOLEAN NOT NULL DEFAULT false
 );
-INSERT INTO "new_user" ("email", "id", "name", "password", "picture") SELECT "email", "id", "name", "password", "picture" FROM "user";
+INSERT INTO "new_user" ("admin", "email", "id", "name", "password", "picture", "token") SELECT "admin", "email", "id", "name", "password", "picture", "token" FROM "user";
 DROP TABLE "user";
 ALTER TABLE "new_user" RENAME TO "user";
 CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
