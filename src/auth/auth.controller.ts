@@ -47,8 +47,8 @@ export class AuthController {
   @ApiOperation({summary: "Validar token do usuário."})
   async signInRecover(@Body() recoverDto: SignInRecoverDto) {
    const user:User = await this.authService.validateUser(recoverDto.email, undefined, recoverDto.token)
-   return this.authService.login(user)
-  }
+   return {access_token: (await this.authService.login(user)).access_token,...user,};
+  };
 
   @UseGuards(AuthGuard)
   @ApiBearerAuth()

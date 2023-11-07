@@ -19,7 +19,7 @@ export class EmailService {
     });
 
     const mailOptions = {
-      from: 'Telegraf Auto<dbatista@findes.org.br>',
+      from: 'Telegraf Auto<gustavosv.senai77@gmail.com>',
       to: to,
       subject: subject,
       text: text,

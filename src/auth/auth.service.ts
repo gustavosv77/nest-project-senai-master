@@ -52,8 +52,9 @@ export class AuthService {
       return result;
     }
 
-    if((token === user.token) && user.token !== 0){
+    if((token == user.token) && user.token !== 0){
       const { password, ...result } = user;
+      console.log("entrei aqui")
       return result;
     }
 

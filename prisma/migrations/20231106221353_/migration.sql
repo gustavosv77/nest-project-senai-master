@@ -5,7 +5,7 @@ CREATE TABLE "user" (
     "name" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "picture" TEXT NOT NULL,
-    "token" INTEGER NOT NULL DEFAULT 0,
+    "token" INTEGER NOT NULL DEFAULT 1,
     "admin" BOOLEAN NOT NULL DEFAULT false
 );
 

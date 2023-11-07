@@ -90,9 +90,10 @@ export class UserService {
         data: { token: Math.floor(Math.random() * 1000000) },
       });
 
+      console.log(user.token);
       await this.emailService.sendEmailWithAttachment(
         'Token de recuperação Telegraf Auto',
-        String(data.token),
+        String(user.token),
         data.email,
       );
 
@@ -101,6 +102,7 @@ export class UserService {
           where: { email },
           data: { token: 0 },
         });
+        console.log("mudei token para 0")
       }, 900000);
 
       return user.token;
